@@ -1,0 +1,52 @@
+   30.48                Flight airspeed (m/sec)
+     0.0                Flight Mach number (use 0.0 for incompressible flow)
+     1.225              Flight air density (kg/m^3)
+     9341.26539         Flight Gross weight (N)
+     0.0                Flight climb angle (degrees)
+     0.0                Flight bank angle (degrees)
+     11.28771936        Wing area (m^2)
+     14.81328           Wing span(m)
+     0.0                Thrust offset, positive below CG (m)
+     0.0                Thrust slope, dT/dV (N-sec/m)
+ 3.35971896             Reference length (m)
+ 41.148                 Reference airspeed (m/sec)
+ 0.0000                 Reference Mach number (use 0.0 for incompressible flow)
+ 1.225                  Reference air density (kg/m^3)
+ 9341.26539             Reference level flight lift (N)
+     2485.214324149 Reference Ixx (kg-m^2)
+     2205.915823999 Reference Iyy (kg-m^2)
+     4277.605669771 Reference Izz (kg-m^2)
+     0.0000         Reference Ixy (kg-m^2)
+     0.0000         Reference Ixz (kg-m^2)
+     0.0000         Reference Iyz (kg-m^2)
+ 0.0712529              Reference drag coefficient
+     0.0                Reference CL,M
+     0.0                Reference CD,M
+     0.0                Reference Cm,M
+ 7.0015             Reference CL,alpha  (lift)
+ 0.2264             Reference CD,alpha
+ 0.0                Reference Cll,alpha (rolling moment)
+-0.6806             Reference Cm,alpha
+ 0.0                Reference Cn,alpha
+     0.0                Reference CL,alphahat
+     0.0                Reference CD,alphahat
+     0.0                Reference Cm,alphahat
+ 0.0                Reference CL,uhat
+ 0.0                Reference CD,uhat
+ 0.0                Reference Cm,uhat
+    -0.6259             Reference CY,beta
+    -0.1223             Reference Cl,beta
+     0.0000             Reference Cm,beta
+     0.0415             Reference Cn,beta
+ 4.2175             Reference CL,qbar
+-0.3510             Reference CD,qbar
+-175.9672           Reference Cm,qbar
+     0.0                Reference CY,pbar
+    -0.7183             Reference Cl,pbar
+    -0.0460             Reference Cn,pbar
+ 0.3393             Reference CY,rbar
+ 0.2337             Reference Cl,rbar
+-0.0972             Reference Cn,rbar
+     0.0                Reference hx (kg-m^2/sec)
+     0.0                Reference hy (kg-m^2/sec)
+     0.0                Reference hz (kg-m^2/sec)

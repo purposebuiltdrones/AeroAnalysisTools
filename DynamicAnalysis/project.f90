@@ -20,32 +20,32 @@ integer :: IERR
 
 !Constants
 real, parameter :: pi = 4.0*atan(1.0) 
-real, parameter :: g = 32.174!04856 !ft/s^2
+real, parameter :: g = 9.80665!m/s^2
 
 !Input Variables
-real :: V_0 !Flight Airspeed (ft/s)
+real :: V_0 !Flight Airspeed (m/s)
 real :: MachNum !Flight Mach Number
-real :: rho !Air Density (slug/ft^3)
-real :: W !Flight Gross Weight (lbf)
+real :: rho !Air Density (kg/m^3)
+real :: W !Flight Gross Weight (N)
 real :: th0 !Flight Climb Angle
 real :: phi0 !Flight Bank Angle
 real :: th0_deg !Flight Climb Angle
 real :: phi0_deg !Flight Bank Angle
-real :: Sw !Wing Area (ft^2)
-real :: bw !Wing Span (ft)
-real :: ThrustOffset !Thrust Offset, positive below CG (ft)
-real :: ThrustSlope !Thrust Slope, dT/dV (lbf-sec/ft)
-real :: l_ref !Reference Length (ft)
-real :: V_ref !Reference Airspeed (ft/s)
+real :: Sw !Wing Area (m^2)
+real :: bw !Wing Span (m)
+real :: ThrustOffset !Thrust Offset, positive below CG (m)
+real :: ThrustSlope !Thrust Slope, dT/dV (N-sec/m)
+real :: l_ref !Reference Length (m)
+real :: V_ref !Reference Airspeed (m/s)
 real :: MachNum_ref !Reference Mach Number
-real :: rho_ref !Reference Air Density (slug/ft^3)
+real :: rho_ref !Reference Air Density (kg/m^3)
 real :: Lift_ref !Reference level flight lift (lbf)
-real :: Ixx_ref !Reference Ixx (slug-ft^2)
-real :: Iyy_ref !Reference Iyy (slug-ft^2)
-real :: Izz_ref !Reference Izz (slug-ft^2)
-real :: Ixy_ref !Reference Ixy (slug-ft^2)
-real :: Ixz_ref !Reference Ixz (slug-ft^2)
-real :: Iyz_ref !Reference Iyz (slug-ft^2)
+real :: Ixx_ref !Reference Ixx (kg-m^2)
+real :: Iyy_ref !Reference Iyy (kg-m^2)
+real :: Izz_ref !Reference Izz (kg-m^2)
+real :: Ixy_ref !Reference Ixy (kg-m^2)
+real :: Ixz_ref !Reference Ixz (kg-m^2)
+real :: Iyz_ref !Reference Iyz (kg-m^2)
 real :: CD_ref !Reference drag coefficient
 real :: CL_M_ref !Reference CL,M
 real :: CD_M_ref !Reference CD,M
@@ -74,9 +74,9 @@ real :: Cnpbar_ref !Reference Cn,pbar
 real :: CYrbar_ref !Reference CY,rbar
 real :: Clrbar_ref !Reference Cl,rbar
 real :: Cnrbar_ref !Reference Cn,rbar
-real :: hx_ref !Reference hx (slug-ft^2/s)
-real :: hy_ref !Reference hy (slug-ft^2/s)
-real :: hz_ref !Reference hz (slug-ft^2/s)
+real :: hx_ref !Reference hx (kg-m^2/s)
+real :: hy_ref !Reference hy (kg-m^2/s)
+real :: hz_ref !Reference hz (kg-m^2/s)
 
 
 !Transformed Variables
@@ -142,7 +142,7 @@ real :: tp
 real :: Cm
 real :: M
 complex, dimension(:,:), allocatable :: EigenVec
-character(100) :: filename = 'PredatorMod'!'Ex9_8_1'
+character(100) :: filename = 'PredatorModMetric'!'Ex9_8_1'
 character(4) :: ext_txt = '.txt'
 character(100) :: temp ,fmt
 integer :: ii,jj,i
@@ -247,25 +247,25 @@ subroutine input_read
 
     read(12,*) V_0 !Flight Airspeed (ft/s)
     read(12,*) MachNum !Flight Mach Number
-    read(12,*) rho !Air Density (slug/ft^3)
+    read(12,*) rho !Air Density (kg/m^3)
     read(12,*) W !Flight Gross Weight (lbf)
     read(12,*) th0_deg !Flight Climb Angle (deg)
     read(12,*) phi0_deg !Flight Bank Angle (deg)
     read(12,*) Sw !Wing Area (ft^2)
-    read(12,*) bw !Wing Span (ft)
-    read(12,*) ThrustOffset !Thrust Offset, positive below CG (ft)
+    read(12,*) bw !Wing Span (m)
+    read(12,*) ThrustOffset !Thrust Offset, positive below CG (m)
     read(12,*) ThrustSlope !Thrust Slope, dT/dV (lbf-sec/ft)
-    read(12,*) l_ref !Reference Length (ft)
+    read(12,*) l_ref !Reference Length (m)
     read(12,*) V_ref !Reference Airspeed (ft/s)
     read(12,*) MachNum_ref !Reference Mach Number
-    read(12,*) rho_ref !Reference Air Density (slug/ft^3)
+    read(12,*) rho_ref !Reference Air Density (kg/m^3)
     read(12,*) Lift_ref !Reference level flight lift (lbf)
-    read(12,*) Ixx_ref !Reference Ixx (slug-ft^2)
-    read(12,*) Iyy_ref !Reference Iyy (slug-ft^2)
-    read(12,*) Izz_ref !Reference Izz (slug-ft^2)
-    read(12,*) Ixy_ref !Reference Ixy (slug-ft^2)
-    read(12,*) Ixz_ref !Reference Ixz (slug-ft^2)
-    read(12,*) Iyz_ref !Reference Iyz (slug-ft^2)
+    read(12,*) Ixx_ref !Reference Ixx (kg-m^2)
+    read(12,*) Iyy_ref !Reference Iyy (kg-m^2)
+    read(12,*) Izz_ref !Reference Izz (kg-m^2)
+    read(12,*) Ixy_ref !Reference Ixy (kg-m^2)
+    read(12,*) Ixz_ref !Reference Ixz (kg-m^2)
+    read(12,*) Iyz_ref !Reference Iyz (kg-m^2)
     read(12,*) CD_ref !Reference drag coefficient
     read(12,*) CL_M_ref !Reference CL,M
     read(12,*) CD_M_ref !Reference CD,M
@@ -294,9 +294,9 @@ subroutine input_read
     read(12,*) CYrbar_ref !Reference CY,rbar
     read(12,*) Clrbar_ref !Reference Cl,rbar
     read(12,*) Cnrbar_ref !Reference Cn,rbar
-    read(12,*) hx_ref !Referenc hx (slug-ft^2/s)
-    read(12,*) hy_ref !Referenc hx (slug-ft^2/s)
-    read(12,*) hz_ref !Referenc hx (slug-ft^2/s)
+    read(12,*) hx_ref !Referenc hx (kg-m^2/s)
+    read(12,*) hy_ref !Referenc hx (kg-m^2/s)
+    read(12,*) hz_ref !Referenc hx (kg-m^2/s)
     close(12)
 
     cw = Sw/bw
@@ -317,25 +317,25 @@ subroutine input_read
         fmt = '(f14.8,4x,a)'
         write(*,fmt) V_0, 'Flight airspeed (ft/sec)' !Flight Airspeed (ft/s)
         write(*,fmt) MachNum, 'Flight Mach number' !Flight Mach Number
-        write(*,fmt) rho, 'Flight air density (slug/ft^3)' !Air Density (slug/ft^3)
+        write(*,fmt) rho, 'Flight air density (kg/m^3)' !Air Density (kg/m^3)
         write(*,fmt) W, 'Flight Gross weight (lbf)' !Flight Gross Weight (lbf)
         write(*,fmt) th0_deg, 'Flight climb angle (degrees)' !Flight Climb Angle
         write(*,fmt) phi0_deg, 'Flight bank angle (degrees)' !Flight Bank Angle
         write(*,fmt) Sw, 'Wing area (ft^2)' !Wing Area (ft^2)
-        write(*,fmt) bw, 'Wing span(ft)' !Wing Span (ft)
-        write(*,fmt) ThrustOffset, 'Thrust offset, positive below CG (ft)' !Thrust Offset, positive below CG (ft)
+        write(*,fmt) bw, 'Wing span(m)' !Wing Span (m)
+        write(*,fmt) ThrustOffset, 'Thrust offset, positive below CG (m)' !Thrust Offset, positive below CG (m)
         write(*,fmt) ThrustSlope, 'Thrust slope, dT/dV (lbf-sec/ft)' !Thrust Slope, dT/dV (lbf-sec/ft)
-        write(*,fmt) l_ref, 'Reference length (ft)' !Reference Length (ft)
+        write(*,fmt) l_ref, 'Reference length (m)' !Reference Length (m)
         write(*,fmt) V_ref, 'Reference airspeed (ft/sec)' !Reference Airspeed (ft/s)
         write(*,fmt) MachNum_ref, 'Reference Mach number' !Reference Mach Number
-        write(*,fmt) rho_ref, 'Reference air density (slug/ft^3)' !Reference Air Density (slug/ft^3)
+        write(*,fmt) rho_ref, 'Reference air density (kg/m^3)' !Reference Air Density (kg/m^3)
         write(*,fmt) Lift_ref, 'Reference level flight lift (lbf)' !Reference level flight lift (lbf)
-        write(*,fmt) Ixx_ref, 'Reference Ixx (slug-ft^2)' !Reference Ixx (slug-ft^2)
-        write(*,fmt) Iyy_ref, 'Reference Iyy (slug-ft^2)' !Reference Iyy (slug-ft^2)
-        write(*,fmt) Izz_ref, 'Reference Izz (slug-ft^2)' !Reference Izz (slug-ft^2)
-        write(*,fmt) Ixy_ref, 'Reference Ixy (slug-ft^2)' !Reference Ixy (slug-ft^2)
-        write(*,fmt) Ixz_ref, 'Reference Ixz (slug-ft^2)' !Reference Ixz (slug-ft^2)
-        write(*,fmt) Iyz_ref, 'Reference Iyz (slug-ft^2)' !Reference Iyz (slug-ft^2)
+        write(*,fmt) Ixx_ref, 'Reference Ixx (kg-m^2)' !Reference Ixx (kg-m^2)
+        write(*,fmt) Iyy_ref, 'Reference Iyy (kg-m^2)' !Reference Iyy (kg-m^2)
+        write(*,fmt) Izz_ref, 'Reference Izz (kg-m^2)' !Reference Izz (kg-m^2)
+        write(*,fmt) Ixy_ref, 'Reference Ixy (kg-m^2)' !Reference Ixy (kg-m^2)
+        write(*,fmt) Ixz_ref, 'Reference Ixz (kg-m^2)' !Reference Ixz (kg-m^2)
+        write(*,fmt) Iyz_ref, 'Reference Iyz (kg-m^2)' !Reference Iyz (kg-m^2)
         write(*,fmt) CD_ref, 'Reference drag coefficient' !Reference drag coefficient
         write(*,fmt) CL_M_ref, 'Reference CL,M' !Reference CL,M
         write(*,fmt) CD_M_ref, 'Reference CD,M' !Reference CD,M
@@ -364,9 +364,9 @@ subroutine input_read
         write(*,fmt) CYrbar_ref, 'Reference CY,rbar' !Reference CY,rbar
         write(*,fmt) Clrbar_ref, 'Reference Cl,rbar' !Reference Cl,rbar
         write(*,fmt) Cnrbar_ref, 'Reference Cn,rbar' !Reference Cn,rbar
-        write(*,fmt) hx_ref, 'Reference hx (slug-ft^2/sec)' !Referenc hx (slug-ft^2/s)
-        write(*,fmt) hy_ref, 'Reference hy (slug-ft^2/sec)' !Referenc hx (slug-ft^2/s)
-        write(*,fmt) hz_ref, 'Reference hz (slug-ft^2/sec)' !Referenc hx (slug-ft^2/s)
+        write(*,fmt) hx_ref, 'Reference hx (kg-m^2/sec)' !Referenc hx (kg-m^2/s)
+        write(*,fmt) hy_ref, 'Reference hy (kg-m^2/sec)' !Referenc hx (kg-m^2/s)
+        write(*,fmt) hz_ref, 'Reference hz (kg-m^2/sec)' !Referenc hx (kg-m^2/s)
 
 
         write(*,*) '''Enter'' to continue'
