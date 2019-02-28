@@ -315,21 +315,21 @@ subroutine input_read
     if (y_or_n == 'y') then
 
         fmt = '(f14.8,4x,a)'
-        write(*,fmt) V_0, 'Flight airspeed (ft/sec)' !Flight Airspeed (ft/s)
+        write(*,fmt) V_0, 'Flight airspeed (m/s)' !Flight Airspeed (ft/s)
         write(*,fmt) MachNum, 'Flight Mach number' !Flight Mach Number
         write(*,fmt) rho, 'Flight air density (kg/m^3)' !Air Density (kg/m^3)
-        write(*,fmt) W, 'Flight Gross weight (lbf)' !Flight Gross Weight (lbf)
+        write(*,fmt) W, 'Flight Gross weight (N)' !Flight Gross Weight (lbf)
         write(*,fmt) th0_deg, 'Flight climb angle (degrees)' !Flight Climb Angle
         write(*,fmt) phi0_deg, 'Flight bank angle (degrees)' !Flight Bank Angle
-        write(*,fmt) Sw, 'Wing area (ft^2)' !Wing Area (ft^2)
+        write(*,fmt) Sw, 'Wing area (m^2)' !Wing Area (ft^2)
         write(*,fmt) bw, 'Wing span(m)' !Wing Span (m)
         write(*,fmt) ThrustOffset, 'Thrust offset, positive below CG (m)' !Thrust Offset, positive below CG (m)
-        write(*,fmt) ThrustSlope, 'Thrust slope, dT/dV (lbf-sec/ft)' !Thrust Slope, dT/dV (lbf-sec/ft)
+        write(*,fmt) ThrustSlope, 'Thrust slope, dT/dV (N-sec/m)' !Thrust Slope, dT/dV (lbf-sec/ft)
         write(*,fmt) l_ref, 'Reference length (m)' !Reference Length (m)
-        write(*,fmt) V_ref, 'Reference airspeed (ft/sec)' !Reference Airspeed (ft/s)
+        write(*,fmt) V_ref, 'Reference airspeed (m/s)' !Reference Airspeed (ft/s)
         write(*,fmt) MachNum_ref, 'Reference Mach number' !Reference Mach Number
         write(*,fmt) rho_ref, 'Reference air density (kg/m^3)' !Reference Air Density (kg/m^3)
-        write(*,fmt) Lift_ref, 'Reference level flight lift (lbf)' !Reference level flight lift (lbf)
+        write(*,fmt) Lift_ref, 'Reference level flight lift (N)' !Reference level flight lift (lbf)
         write(*,fmt) Ixx_ref, 'Reference Ixx (kg-m^2)' !Reference Ixx (kg-m^2)
         write(*,fmt) Iyy_ref, 'Reference Iyy (kg-m^2)' !Reference Iyy (kg-m^2)
         write(*,fmt) Izz_ref, 'Reference Izz (kg-m^2)' !Reference Izz (kg-m^2)
